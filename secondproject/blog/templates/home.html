@@ -1,12 +1,13 @@
 <html>
     {% extends 'base.html' %}
 
-    {% block contents %}
-    <body>  
-        {% for blog in blogs.all %}
+    <body>          
+        {% block contents %}
+
+        {% for blog in posts %}
         <div class="container">
             <br><br>
-            <div class="card" style="width: 60rem;">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> {{blog.title}} </h5>
                     <h6 class="card-subtitle mb-2 text-muted"> {{blog.pub_date}} </h6>
@@ -15,7 +16,24 @@
             </div>
         </div>
         {% endfor %}
+
+        <div class="container">
+            <a href="?page=1">First</a>
+            {% if posts.has_previous %}
+            <a href="?page={{posts.previous_page_number}}">Previous</a>
+            {% endif %}
+
+            <span>{{posts.number}}</span>
+            <span>of</span>
+            <span>{{posts.paginator.num_pages}}</span>
+
+            {% if posts.has_next %}
+            <a href="?page={{posts.next_page_number}}">Next</a>
+            {% endif %}
+            <a href="?page={{posts.paginator.num_pages}}">Last</a>
+        </div>
+
+        {% endblock %}
     </body>
-    {% endblock %}
 </html>
 
