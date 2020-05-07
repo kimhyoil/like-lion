@@ -14,7 +14,6 @@ def home(request):
     posts = paginator.get_page(page)
     print(posts)
     return render(request, 'home.html', {'blogs':blogs, 'posts':posts})
-
     # 쿼리셋과 메소드 형식
     # 모델.쿼리셋s
 
