@@ -25,7 +25,7 @@ SECRET_KEY = 'to$(+u!_$3drb=1knsex+y4#2w%5r9bx^xm8yf)giu1%zwcqy0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-env.eba-hi8em7gq.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -91,6 +91,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation
