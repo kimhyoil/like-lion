@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style>
+        .todo-item {
+            font-size: large;
+        }
+        .todo-list{
+            flex: auto;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    {% for item in todo_list.all %}
+    <div class="todo-list">
+        <ul>
+            <li class="todo-item">{{ item.todo }}
+            <a href="{% url 'delete' item.id %}"><button class="glyphicon glyphicon-remove" ></button></a>
+            <a href="{% url 'update' item.id %}"><button class="glyphicon glyphicon-pencil" ></button></a>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+    
+    <form method="POST" action="{% url 'create' %}">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <br>
+    </form>
+</body>
